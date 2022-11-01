@@ -1,6 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection = 'scissors';
+let playerSelection = '';
 
 function getComputerChoice() {
     // randomly return 'Rock', 'Paper', 'Scissors'
@@ -8,7 +8,6 @@ function getComputerChoice() {
     const randomChoice = Math.floor(Math.random() * choices.length);
 
     let computerSelection = choices[randomChoice];
-    console.log(computerSelection);
     return computerSelection; //returns choice as string
 }
 
@@ -17,7 +16,7 @@ function playRound(playerSelection, computerSelection) {
     // return string that declares winner
     // track computer/player wins in global variables
     
-    //playerSelection = prompt("Type in your choice: (Rock, Paper or Scissors)").toLowerCase();
+    playerSelection = prompt("Type in your choice: (Rock, Paper or Scissors)").toLowerCase();
     
     if (playerSelection === computerSelection) {
         return `It's a tie!`;
