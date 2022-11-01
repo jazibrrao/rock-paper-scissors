@@ -15,43 +15,40 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // prompt user for their choice (case-insensitive)
-    // player vs computer
     // return string that declares winner
     //playerSelection = prompt("Type in your choice: (Rock, Paper or Scissors)").toLowerCase();
     
     if (playerSelection === computerSelection) {
-        console.log(`It's a tie!`);
+        return `It's a tie!`;
     }
     else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            console.log('The computer chose paper. You lose this round!');
+            return 'You Lose! Paper beats Rock.';
         }
         else {
-            console.log('The computer chose scissors. You win this round!');
+            return 'You Win! Rock beats Scissors.';
         }
     }
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
-            console.log('The computer chose rock. You win this round!');
+            return 'You Win! Paper beats Rock.';
         }
         else {
-            console.log('The computer chose scissors. You lose this round!');
+            return 'You Lose! Scissors beats Paper.';
         }
     }
     else {
         if (computerSelection == 'rock') {
-            console.log('The computer chose rock. You lose this round!');
+            return 'You Lose! Rock beats Scissors.';
         }
         else {
-            console.log('The computer chose paper. You win this round!');
+            return 'You Win! Scissors beats Paper.';
         }
     }
 }
     
-
 function game() {
     // play    
 }
 
-getComputerChoice();
-playRound(playerSelection, getComputerChoice());
+console.log(playRound(playerSelection, getComputerChoice()));
