@@ -1,10 +1,18 @@
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection = '';
+
+const choices = ['rock', 'paper', 'scissors'];
+const images = document.querySelectorAll('img');
+
+// iterate through each rps image and add event listeners to play game
+images.forEach((image) => {
+    image.addEventListener('click', () => {
+        playRound(image.id, getComputerChoice());
+    });
+});
 
 function getComputerChoice() {
     // randomly return 'Rock', 'Paper', 'Scissors'
-    const choices = ['rock', 'paper', 'scissors'];
     const randomChoice = Math.floor(Math.random() * choices.length);
 
     let computerSelection = choices[randomChoice];
@@ -12,58 +20,69 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    // prompt user for their choice (case-insensitive)
-    // return string that declares winner
-    // track computer/player wins in global variables
-    
-    playerSelection = prompt("Type in your choice: (Rock, Paper or Scissors)").toLowerCase();
-    
+    // update DOM with string that declares winner
+    // track computer/player wins in global variables & display results
+    const results = document.querySelector('#results'); // select the div to display results in
+    let scoreUpdate = document.createElement('div'); // initialize element to store result in
+    const playerScoreDisplay = document.querySelector('#playerscore');
+    const computerScoreDisplay = document.querySelector('#computerscore');
+
     if (playerSelection === computerSelection) {
-        return `It's a tie!`;
+        scoreUpdate.innerText = (`It's a tie!`);
+        results.appendChild(scoreUpdate);
     }
     else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
             computerScore += 1;
-            return 'You Lose! Paper beats Rock.';
+            scoreUpdate.innerText = ('You Lose! Paper beats Rock.');
+            results.appendChild(scoreUpdate);
         }
         else {
             playerScore += 1;
-            return 'You Win! Rock beats Scissors.';
+            scoreUpdate.innerText = ('You Win! Rock beats Scissors.');
+            results.appendChild(scoreUpdate);
         }
     }
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
             playerScore += 1;
-            return 'You Win! Paper beats Rock.';
+            scoreUpdate.innerText = ('You Win! Paper beats Rock.');
+            results.appendChild(scoreUpdate);
         }
         else {
             computerScore += 1;
-            return 'You Lose! Scissors beats Paper.';
+            scoreUpdate.innerText = ('You Lose! Scissors beats Paper.');
+            results.appendChild(scoreUpdate);
         }
     }
     else {
         if (computerSelection == 'rock') {
             computerScore += 1;
-            return 'You Lose! Rock beats Scissors.';
+            scoreUpdate.innerText = ('You Lose! Rock beats Scissors.');
+            results.appendChild(scoreUpdate);
         }
         else {
             playerScore += 1;
-            return 'You Win! Scissors beats Paper.';
+            scoreUpdate.innerText = ('You Win! Scissors beats Paper.');
+            results.appendChild(scoreUpdate);
         }
     }
-}
-    
-function game() {
-    // keep playing until either player or computer hit 5 wins
-    while (playerScore < 5 && computerScore < 5) {
-        console.log(playRound(playerSelection, getComputerChoice()));
-    }
-    if (playerScore > computerScore) {
-        console.log(`You Won! Final Score: ${playerScore} - ${computerScore}`);
-    }
-    else {
-        console.log(`You Lost! Final Score: ${playerScore} - ${computerScore}`);
-    }
-}
 
-game();
+    // first player to 5 announces winner and clears scoreboard
+    if (playerScore == 5) {
+        alert(`You reached 5 wins, you've won the game!`);
+        results.innerHTML = "";
+        playerScore = 0;
+        computerScore = 0;
+    }
+    if (computerScore == 5) {
+        alert(`You lost the game, the computer reached 5 points.`);
+        results.innerHTML = "";
+        playerScore = 0;
+        computerScore = 0;
+    }   
+
+    //update player & computer score
+    playerScoreDisplay.innerText = playerScore;
+    computerScoreDisplay.innerText = computerScore;
+}
