@@ -35,11 +35,13 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection == 'paper') {
             computerScore += 1;
             scoreUpdate.innerText = ('You Lose! Paper beats Rock.');
+            scoreUpdate.style.cssText = "color: red; font-weight: bold";
             results.appendChild(scoreUpdate);
         }
         else {
             playerScore += 1;
             scoreUpdate.innerText = ('You Win! Rock beats Scissors.');
+            scoreUpdate.style.cssText = "color: green; font-weight: bold";
             results.appendChild(scoreUpdate);
         }
     }
@@ -47,11 +49,13 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection == 'rock') {
             playerScore += 1;
             scoreUpdate.innerText = ('You Win! Paper beats Rock.');
+            scoreUpdate.style.cssText = "color: green; font-weight: bold";
             results.appendChild(scoreUpdate);
         }
         else {
             computerScore += 1;
             scoreUpdate.innerText = ('You Lose! Scissors beats Paper.');
+            scoreUpdate.style.cssText = "color: red; font-weight: bold";
             results.appendChild(scoreUpdate);
         }
     }
@@ -59,14 +63,16 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection == 'rock') {
             computerScore += 1;
             scoreUpdate.innerText = ('You Lose! Rock beats Scissors.');
-            results.appendChild(scoreUpdate);
+            scoreUpdate.style.cssText = "color: red; font-weight: bold";
+            results.appendChild(scoreUpdate);   
         }
         else {
             playerScore += 1;
             scoreUpdate.innerText = ('You Win! Scissors beats Paper.');
+            scoreUpdate.style.cssText = "color: green; font-weight: bold";
             results.appendChild(scoreUpdate);
         }
-    }
+    } 
 
     // first player to 5 announces winner and clears scoreboard
     if (playerScore == 5) {
@@ -80,7 +86,7 @@ function playRound(playerSelection, computerSelection) {
         results.innerHTML = "";
         playerScore = 0;
         computerScore = 0;
-    }   
+    }
 
     //update player & computer score
     playerScoreDisplay.innerText = playerScore;

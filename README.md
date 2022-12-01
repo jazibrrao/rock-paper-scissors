@@ -4,9 +4,10 @@ The Odin Project Foundations - Project #3 - Rock Paper Scissors
 
 Simple implementation of 'rock paper scissors' game using javascript.
 
-Browser prompts for user choice:
-    - "Rock", "Paper", "Scissors"
+User clicks on one of the three images.
 
 Computer randomly selects its own choice.
 
-Result of the round displays in the console.
+Result of the round displays under the scoreboard and player score gets updated each round.
+
+First to 5 points wins.
