@@ -1,7 +1,3 @@
-######
-The Odin Project Foundations - Project #3 - Rock Paper Scissors
-######
-
 Simple implementation of 'rock paper scissors' game using javascript.
 
 User clicks on one of the three images.
